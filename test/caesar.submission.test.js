@@ -52,7 +52,6 @@ describe("caesar() submission tests written by Thinkful", () => {
       const shift = 3;
       const actual = caesar(message, shift);
       const expected = "d phvvdjh";
-
       expect(actual).to.equal(expected);
     });
 

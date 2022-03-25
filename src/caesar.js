@@ -8,11 +8,43 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     // your solution code here
-  }
+    if (!shift || shift < -25 || shift === 0 || shift > 25)
+      return false;
+
+    if (!encode)
+      shift *= -1;
+
+    input = input.toLowerCase();
+
+    let result = "";
+
+    for (let index = 0; index < input.length; index++)
+    {
+
+      const code = input.charCodeAt(index);
+
+      if (code >= 97 && code <= 122){
+        if (code + shift > 122)
+          result += String.fromCharCode(code + shift - 26);
+        else if (code + shift < 97)
+          result += String.fromCharCode(code + shift + 26);
+        else 
+          result += String.fromCharCode(code + shift);
+      }//end outer if
+
+      else
+        result += String.fromCharCode(code);
+
+    }//end for
+
+    return result;
+
+  }//end caesar()
 
   return {
     caesar,
-  };
-})();
+  };//end return
+
+})();//end caesarModule
 
 module.exports = { caesar: caesarModule.caesar };
